@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" style="background-color:black;">
+<head>
+    <title>A14 - Angular - WebApi - MakeLifeEasy</title>
+
+</head>
+<body ng-app="appAdmirMain">
+
+    <div ng-controller="cMain">
+
+        <!--<ad-webapi2 id="webapi2-1"
+                    tables='[   {"tableName":"customers",  "action":"query" },
+                                {"tableName":"suppliers",  "action":"query"}]'>
+
+        </ad-webapi2>-->
+        <ad-webapi2 id="webapi2-1"
+                tables='[   {"tableName":"customers",  "action":"query" }]'>
+
+    </ad-webapi2>
+
+        <ad-webapi2 id="webapi2-3"
+                    tables='[   {"tableName":"bands",  "action":"query" }]'>
+
+        </ad-webapi2>
+        <!--<ad-webapi2 id="webapi2-2" tables='[{"tableName":"customers", "action":"query", "orderBy":"ContactName desc" , "filterBy" : "substringof(&#39;kelvin&#39; , ContactName )" } ]'></ad-webapi2>-->
+        <ad-webapi2 id="webapi2-3" tables='[{"tableName":"suppliers", "action":"query", "orderBy":"ContactName asc" , "filterBy" : "substringof(&#39;u&#39; , ContactName )" , "topBy" : "5"  , "skipBy" : "1" } ]'></ad-webapi2>
+
+        <table>
+            <tr>
+                <td>
+                    <img src="Images/Admir01-BlackBackground.png" style="width:100px; height:100px;" />
+                </td>
+                <td style="font-size:26px;color:white; vertical-align:top">Angular 1.14 Make Life Easy.</td>
+            </tr>
+        </table>
+
+        <table>
+            <tr>
+                <td style ="font-size:18px;color:white; vertical-align:top">
+                    Requirements: Get data back from SQL Server into a webpage as easy as possible using angular directive and webapi. Using only the following markup syntax:
+                </td>
+            </tr>
+            <tr>
+                <td style="font-size:18px;color:wheat; vertical-align:top">
+                    &lt;ad-webapi2 id="webapi2-1" tables='[{"tableName":"customers", "action":"query } ]'></ad-webapi2>
+                </td>
+            </tr>
+       </table>
+
+        <table>
+            <tr>
+                <td style="font-size:18px;color:white; vertical-align:top">
+                    Add filtering, sorting etc.: 
+                </td>
+            </tr>
+            <tr>
+                <td style="font-size:18px;color:wheat; vertical-align:top">
+                    &lt;ad-webapi2 id="webapi2-2" tables='[{"tableName":"suppliers", "action":"query, "orderBy":"ContactName asc" , "filterBy" : "substringof(&#39;e&#39; , ContactName )" , "topBy" : "5"  , "skipBy" : "1" } ]'></ad-webapi2>
+                </td>
+            </tr>
+
+        </table>
+
+        <br />
+        <table>
+            <tr>
+                <td style="font-size:18px;color:white; vertical-align:top">
+                    Results:
+                </td>
+            </tr>
+
+        </table>
+
+        <br/>
+
+        <table>
+            <tr>
+                <td style="font-size:20px;color:white">Customers</td>
+            </tr>
+        </table>
+        <div style="height:100%; width:100%; border-style:solid; border-width:2px; border-color:silver;text-align:left; overflow-y:auto; overflow-x:hidden;">
+            <table style="color:wheat">
+                <tr>
+                    <th style="text-align:left;color:white; background-color:transparent; ">Company</th>
+                    <th style="text-align:left;color:white; background-color:transparent;padding:0px 0px 0px 40px; ">Name</th>
+                </tr>
+                <tr data-ng-repeat="(keyp, p) in customersList">
+                    <td><div ng-bind="p.companyName"></div></td>
+                    <td style=" padding:0px 0px 0px 40px;"><div ng-bind="p.contactName"></div></td>
+                </tr>
+            </table>
+
+        </div>
+
+        <br/>
+        <table>
+            <tr>
+                <td style="font-size:20px;color:white">Suppliers</td>
+            </tr>
+        </table>
+        <div style="height:100%; width:100%; border-style:solid; border-width:2px; border-color:silver;text-align:left; overflow-y:auto; overflow-x:hidden;">
+            <table style="color:wheat;">
+                <tr>
+                    <th style="text-align:left;color:white; background-color:transparent; ">Company</th>
+                    <th style="text-align:left;color:white; background-color:transparent;padding:0px 0px 0px 40px; ">Name</th>
+                </tr>
+                <tr data-ng-repeat="(keyp, p) in suppliersList">
+                    <td><div ng-bind="p.companyName"></div></td>
+                    <td style=" padding:0px 0px 0px 40px;"><div ng-bind="p.contactName"></div></td>
+                </tr>
+            </table>
+
+        </div>
+
+
+        <table>
+            <tr>
+                <td style="font-size:20px;color:white">Bands</td>
+            </tr>
+        </table>
+        <div style="height:100%; width:100%; border-style:solid; border-width:2px; border-color:silver;text-align:left; overflow-y:auto; overflow-x:hidden;">
+            <table style="color:wheat;">
+                <tr>
+                    <th style="text-align:left;color:white; background-color:transparent; ">Id</th>
+                    <th style="text-align:left;color:white; background-color:transparent;padding:0px 0px 0px 40px; ">Description</th>
+                </tr>
+                <tr data-ng-repeat="(keyp, p) in bandsList">
+                    <td><div ng-bind="p.id"></div></td>
+                    <td style=" padding:0px 0px 0px 40px;"><div ng-bind="p.description"></div></td>
+                </tr>
+            </table>
+
+        </div>
+
+
+
+
+    </div>
+
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-resource.min.js"></script>
+
+    <!-- Admir -->
+    <script src="Angular/Modules/appAdmirMain.js"></script>
+    <script src="Angular/Modules/Main/Controllers/cMain.js"></script>
+    <script src="Angular/Modules/WebApi/appWebApi.js"></script>
+    <script src="Angular/Modules/WebApi/Factories/fWebapi2.js"></script>
+    <script src="Angular/Modules/WebApi/Directives/adWebapi2.js"></script>
+
+
+</body>
+</html>
