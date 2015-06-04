@@ -1118,7 +1118,7 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Repos\AngularWebApiMakeLifeEasy\AngularWebApiMakeLifeEasyModel\AngularWebApiMakeLifeEasyModel.csproj">
+    <ProjectReference Include="..\AngularWebApiMakeLifeEasyModel\AngularWebApiMakeLifeEasyModel.csproj">
       <Project>{e7598e6c-1223-4e11-934b-fead06fd1740}</Project>
       <Name>AngularWebApiMakeLifeEasyModel</Name>
     </ProjectReference>

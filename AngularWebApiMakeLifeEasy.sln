@@ -5,7 +5,7 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularWebApiMakeLifeEasy", "AngularWebApiMakeLifeEasy\AngularWebApiMakeLifeEasy.csproj", "{31ADCA1D-3E36-44DC-864C-84B6C245BAA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularWebApiMakeLifeEasyModel", "..\..\..\Repos\AngularWebApiMakeLifeEasy\AngularWebApiMakeLifeEasyModel\AngularWebApiMakeLifeEasyModel.csproj", "{E7598E6C-1223-4E11-934B-FEAD06FD1740}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularWebApiMakeLifeEasyModel", "AngularWebApiMakeLifeEasyModel\AngularWebApiMakeLifeEasyModel.csproj", "{E7598E6C-1223-4E11-934B-FEAD06FD1740}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
