@@ -1,0 +1,56 @@
+﻿<div style="border-style:solid; border-width:2px; border-color:white; border-radius:4px;">
+
+    <div style="width:100%; position:relative;overflow:hidden">
+        <div style="width:100%; position:absolute; background-color:#D00A00; opacity:.3" ></div>
+
+        <table>
+            <tr>
+                <td class="admir_1">
+                    <pagination items-per-page="itemsPerPage" ng-change="pageChanged()" total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true"></pagination>
+
+                </td>
+                <td>Page Size</td>
+                <td><input type="text" style="color:black;width:30px;text-align:right" ng-model="itemsPerPage" /></td>
+            </tr>
+        </table>
+        <table style="width:10%; position:relative; background-color:transparent;">
+
+            <tr>
+                <th style="text-align:left;" data-ng-repeat="(keyp, p) in keys" ng-click='changeClientOrderBy(keyp)'><div ng-bind="p"></div></th>
+                <th>First Column</th>
+
+            </tr>
+            <tr >
+                <td style="text-align:left;color:black;" data-ng-repeat="(keyp, p) in keys">
+                    <table>
+                        <tr>
+                            <td><input style="width:50px;" type="text" ng-model="search" /></td>
+                            <td><button style="color:white;background-color:#D00A00;" class="btn  btn-xs" ng-click="Test(p, search)">Search</button></td>
+                        </tr>
+                    </table>
+                </td>
+                <td>First Column</td>
+
+            </tr>
+
+            <tr data-ng-repeat="(keyp, p) in data">
+                <td style="text-align:left;min-width:160px;" data-ng-repeat="(keyk, k) in keys">
+                    <div ng-bind="p[k]"></div>
+                </td>
+                <td style="background-color:transparent;vertical-align:top; white-space:nowrap">
+                    <button style="color:white;background-color:#D00A00;" class="btn  btn-xs" ng-disabled="isDisabled" ng-click="Edit(a, keya)" ng-if="!isEditable">Edit</button>
+                    <button style="color:white;background-color:#D00A00;" class="btn  btn-xs" ng-click="Update(p, keyp)" ng-if="isEditable">Update</button>
+                    <button style="color:white;background-color:#D00A00;" class="btn  btn-xs" ng-disabled="isDisabled" ng-click="Delete()" ng-if="!isEditable">Delete</button>
+                    <button style="color:white;background-color:#D00A00;" class="btn  btn-xs" ng-click="Cancel(a, keya)" ng-if="isEditable">Cancel</button>
+                    <button style="color:white;background-color:#D00A00;" class="btn  btn-xs" ng-disabled="isDisabled" ng-click="Run(p, keyp)" ng-if="!isEditable">Run</button>
+                    <button style="color:white;background-color:#D00A00;" class="btn  btn-xs" ng-disabled="isDisabled" ng-click="Test(p, keyp)" ng-if="!isEditable">Test</button>
+
+                </td>
+
+            </tr>
+
+
+        </table>
+    </div>
+
+</div>

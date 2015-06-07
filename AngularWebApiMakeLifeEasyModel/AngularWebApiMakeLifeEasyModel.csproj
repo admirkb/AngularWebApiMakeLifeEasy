@@ -71,6 +71,9 @@
     <Compile Include="Model\Customer.cs">
       <DependentUpon>AngularWebApiMakeLifeEasyModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ProductFile.cs">
+      <DependentUpon>AngularWebApiMakeLifeEasyModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Supplier.cs">
       <DependentUpon>AngularWebApiMakeLifeEasyModel.tt</DependentUpon>
     </Compile>

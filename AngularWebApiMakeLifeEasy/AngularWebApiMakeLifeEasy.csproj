@@ -234,6 +234,7 @@
     <Compile Include="Controllers\BandsController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductFilesController.cs" />
     <Compile Include="Controllers\SuppliersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -250,7 +251,13 @@
   <ItemGroup>
     <Content Include="Angular\Modules\appAdmirMain.js" />
     <Content Include="Angular\Modules\Main\Controllers\cMain.js" />
+    <Content Include="Angular\Modules\Main\Controllers\cMain3.js" />
+    <Content Include="Angular\Modules\Main\Controllers\cMain2.js" />
+    <Content Include="Angular\Modules\Main\Directives\adGrid2.js" />
+    <Content Include="Angular\Modules\Main\Directives\Html\adGridHeader.html" />
     <Content Include="Angular\Modules\WebApi\appWebApi.js" />
+    <Content Include="Angular\Modules\WebApi\Directives\adGrid2 remove.js" />
+    <Content Include="Angular\Modules\WebApi\Directives\adGrid remove.js" />
     <Content Include="Angular\Modules\WebApi\Directives\adWebapi2.js" />
     <Content Include="Angular\Modules\WebApi\Factories\fWebapi2.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -258,6 +265,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -287,6 +295,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="Images\Admir01-BlackBackground.png" />
+    <Content Include="index2.html" />
     <Content Include="index.html" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
@@ -311,6 +320,10 @@
     <Content Include="Scripts\angular-scenario.js" />
     <Content Include="Scripts\angular-touch.js" />
     <Content Include="Scripts\angular-touch.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\errors.json" />
@@ -1088,6 +1101,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Sql Scripts\Create Database Admir.AngularWebApiMakeLifeEasy.sql" />
     <Content Include="Sql Scripts\Create Tables Admir.AngularWebApiMakeLifeEasy.sql" />
+    <Content Include="useful.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1107,7 +1121,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Angular\Modules\Main\Controllers\Html\" />
-    <Folder Include="Angular\Modules\Main\Directives\Html\" />
     <Folder Include="Angular\Modules\Main\Factories\" />
     <Folder Include="Angular\Modules\Main\Services\" />
     <Folder Include="Angular\Modules\WebApi\Controllers\" />

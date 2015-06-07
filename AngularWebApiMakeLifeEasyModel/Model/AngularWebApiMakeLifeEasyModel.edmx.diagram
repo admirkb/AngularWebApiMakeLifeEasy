@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="Admir.AngularWebApiMakeLifeEasyModel.Customer" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Admir.AngularWebApiMakeLifeEasyModel.Supplier" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Admir.AngularWebApiMakeLifeEasyModel.Band" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="Admir.AngularWebApiMakeLifeEasyModel.ProductFile" Width="1.5" PointX="3.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

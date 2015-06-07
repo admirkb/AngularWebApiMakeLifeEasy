@@ -1,0 +1,131 @@
+﻿                            // for {{}}
+                            //htmlY = "<td><div >" + "{{kjb[" + keyr + "]['" + k + "']}}</div></td>";
+
+                            //var d = "kjb[" + keyr + "]['" + k + "']";
+                  
+                            // for div 
+                            //htmlY = "<td><div ng-bind=" + d + " ></div></td>";
+
+                            // for input 
+                            //htmlY = "<td><input type='text' ng-model=" + d + " ></input></td>";
+
+            
+                            //htmlYTot = htmlYTot + htmlY;
+                            //var col = "{{p." + k + "}}";
+                            //html12 = "<td >" + col  + "</td>";
+                            //html12Tot = html12Tot + html12;
+
+
+							                        // for div 
+                        //html12 = "<td><div ng-bind=" + "p." + k + "" + " ></div></td>";
+                        // for {{}} 
+                        //html12 = "<td >" + "{{p." + k + "}}" + "</td>";
+                        // for input 
+                        //html12 = "<td><input type='text' ng-model=" + "p." + k + "" + " ></input></td>";
+
+						        $scope.changeClientOrderBy = function (orderBy) {
+
+
+            var upperCaseFirstLetterOrderBy = orderBy[0].toUpperCase() + orderBy.slice(1);
+            $scope.serverOrderBy = upperCaseFirstLetterOrderBy;
+
+            console.log("----------")
+
+            console.log($scope.o[orderBy]['orderBy'])
+            $scope.o[orderBy]['orderBy'] = !$scope.o[orderBy]['orderBy'];
+            console.log($scope.o[orderBy]['orderBy'])
+
+            console.log("----------")
+
+
+            //$scope.orderByToggle = $scope.o[$scope.selectBy]['orderBy'];
+
+            var sortType = ($scope.o[orderBy]['orderBy'] == true) ? ' desc' : ' asc';
+
+            $scope.serverOrderBy = upperCaseFirstLetterOrderBy + sortType;
+            console.log($scope.serverOrderBy)
+
+        }
+
+		            //switch (eo.tableName) {
+            //    case 'customers':
+            //        $scope.customersList = eo.data
+            //        break;
+            //    case 'suppliers':
+            //        $scope.suppliersList = eo.data
+            //        break;
+            //    case 'bands':
+            //        $scope.bandsList = eo.data
+            //        break; default:
+            //        // 
+            //}
+
+            ////var jsonData = angular.fromJson(eo.data);
+            //////console.log(jsonData[0])
+
+            ////var divDynamic3 = document.getElementById("divDynamic3");
+            ////var divDynamic3String = "";
+
+            ////var keys = Object.keys(eo.data[0])
+
+            ////var html1 = "<table><tr data-ng-repeat='(keyp, p) in customersList'><td>"
+            ////var html2 = "<button>Click" + ">" + keys[1] + "<" + "</button>" +  "<button>Click" + ">" + keys[1] + "<" + "</button>";
+            ////var html3 = "</td></tr></table>"
+            ////var htmlX = "";
+            ////var htmlY = "";
+            ////var htmlXTot = "";
+            ////var htmlYTot = "";
+
+
+            ////angular.forEach(keys, function (k, keyk) {
+
+            ////    //console.dir(k)
+            ////    var htmlX = "<div>" + k + "</div>";
+            ////    //var htmlX = "<div ng-bind='" + k + "'" + "></div>";
+            ////    var htmlY = "<div ng-bind='" + k + "'" + "></div>";
+            ////    //console.log(htmlY)
+            ////    htmlXTot = htmlXTot + htmlX;
+            ////    htmlYTot = htmlYTot + htmlY;
+            ////    //htmlX = htmlX + "<div ng-bind='customerId'" + ">xxxx</div>";
+            ////});
+
+
+            ////divDynamic3String = html1 + htmlXTot + html3;
+            ////divDynamic3.innerHTML = divDynamic3String;
+
+            //var extElem = $compile(divDynamic3String)($scope);
+
+
+            //for (var j = 0; j < 12; j++) {
+            //    var player = jsonData[j];
+            //    console.log(player)
+
+            //}
+            //console.dir(k)
+            //console.dir(divDynamic3)
+            //console.log('k')
+
+
+
+
+
+            ////var divDynamic2 = document.getElementById("divDynamic2");
+            ////divDynamic2.innerHTML = $scope.dynamicHtml;
+            //var i = 0;
+            //angular.forEach(eo.data, function (p, keyp) {
+
+            //    //for (i = 0; i < 2; i++) {
+            //    //    console.log(p[0]);
+            //    //}
+
+            //    //angular.forEach(p, function (p2, keyp2) {
+            //    //    console.dir(p2['key']);
+
+
+
+            //    //});
+            //    console.dir(p.properties);
+
+
+
+            //});

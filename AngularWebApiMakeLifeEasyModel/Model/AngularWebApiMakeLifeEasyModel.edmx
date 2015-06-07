@@ -27,6 +27,41 @@
           <Property Name="PostalCode" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="Country" Type="nvarchar" MaxLength="64" Nullable="false" />
         </EntityType>
+        <EntityType Name="ProductFile">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+            <PropertyRef Name="ProductCode" />
+          </Key>
+          <Property Name="CustomerId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProductCode" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="DescriptionShort" Type="nvarchar" MaxLength="20" />
+          <Property Name="ProductGroup" Type="int" />
+          <Property Name="KeyboardOrderX" Type="smallint" />
+          <Property Name="KeyboardOrderY" Type="smallint" />
+          <Property Name="HTextAlign" Type="nvarchar" MaxLength="20" />
+          <Property Name="TextSize" Type="nvarchar" MaxLength="3" />
+          <Property Name="Weight" Type="nvarchar" MaxLength="3" />
+          <Property Name="VTextAlign" Type="nvarchar" MaxLength="20" />
+          <Property Name="Facename" Type="nvarchar" MaxLength="40" />
+          <Property Name="VatCode" Type="nvarchar" MaxLength="2" />
+          <Property Name="ShowDescriptionWithImage" Type="bit" />
+          <Property Name="Photo" Type="varbinary(max)" />
+          <Property Name="DSPhoto" Type="varbinary(max)" />
+          <Property Name="WebPhoto" Type="varbinary(max)" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="Filepath" Type="nvarchar" MaxLength="2048" />
+          <Property Name="Tags" Type="nvarchar" MaxLength="512" />
+          <Property Name="Width" Type="int" />
+          <Property Name="Height" Type="int" />
+          <Property Name="SellingPrice" Type="numeric" Precision="16" Scale="4" />
+          <Property Name="XPos" Type="int" />
+          <Property Name="YPos" Type="int" />
+          <Property Name="ProductFace" Type="nvarchar(max)" />
+          <Property Name="UseImage" Type="bit" />
+          <Property Name="ShippingPrice" Type="numeric" Precision="16" Scale="4" />
+          <Property Name="Details" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Suppliers">
           <Key>
             <PropertyRef Name="SupplierId" />
@@ -46,6 +81,7 @@
         <EntityContainer Name="AdmirAngularWebApiMakeLifeEasyModelStoreContainer">
           <EntitySet Name="Bands" EntityType="Self.Bands" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductFile" EntityType="Self.ProductFile" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Suppliers" EntityType="Self.Suppliers" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -86,6 +122,7 @@
           <EntitySet Name="Customers" EntityType="Self.Customer" />
           <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
           <EntitySet Name="Bands" EntityType="Admir.AngularWebApiMakeLifeEasyModel.Band" />
+          <EntitySet Name="ProductFiles" EntityType="Admir.AngularWebApiMakeLifeEasyModel.ProductFile" />
         </EntityContainer>
         <EntityType Name="Band">
           <Key>
@@ -94,6 +131,41 @@
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Decimal" Precision="14" Scale="2" />
+        </EntityType>
+        <EntityType Name="ProductFile">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+            <PropertyRef Name="ProductCode" />
+          </Key>
+          <Property Name="CustomerId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionShort" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ProductGroup" Type="Int32" />
+          <Property Name="KeyboardOrderX" Type="Int16" />
+          <Property Name="KeyboardOrderY" Type="Int16" />
+          <Property Name="HTextAlign" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TextSize" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Weight" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="VTextAlign" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Facename" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="VatCode" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="ShowDescriptionWithImage" Type="Boolean" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DSPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="WebPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Filepath" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="Tags" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="Width" Type="Int32" />
+          <Property Name="Height" Type="Int32" />
+          <Property Name="SellingPrice" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="XPos" Type="Int32" />
+          <Property Name="YPos" Type="Int32" />
+          <Property Name="ProductFace" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UseImage" Type="Boolean" />
+          <Property Name="ShippingPrice" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -139,6 +211,41 @@
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductFiles">
+            <EntityTypeMapping TypeName="Admir.AngularWebApiMakeLifeEasyModel.ProductFile">
+              <MappingFragment StoreEntitySet="ProductFile">
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="ShippingPrice" ColumnName="ShippingPrice" />
+                <ScalarProperty Name="UseImage" ColumnName="UseImage" />
+                <ScalarProperty Name="ProductFace" ColumnName="ProductFace" />
+                <ScalarProperty Name="YPos" ColumnName="YPos" />
+                <ScalarProperty Name="XPos" ColumnName="XPos" />
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Tags" ColumnName="Tags" />
+                <ScalarProperty Name="Filepath" ColumnName="Filepath" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="WebPhoto" ColumnName="WebPhoto" />
+                <ScalarProperty Name="DSPhoto" ColumnName="DSPhoto" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="ShowDescriptionWithImage" ColumnName="ShowDescriptionWithImage" />
+                <ScalarProperty Name="VatCode" ColumnName="VatCode" />
+                <ScalarProperty Name="Facename" ColumnName="Facename" />
+                <ScalarProperty Name="VTextAlign" ColumnName="VTextAlign" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="TextSize" ColumnName="TextSize" />
+                <ScalarProperty Name="HTextAlign" ColumnName="HTextAlign" />
+                <ScalarProperty Name="KeyboardOrderY" ColumnName="KeyboardOrderY" />
+                <ScalarProperty Name="KeyboardOrderX" ColumnName="KeyboardOrderX" />
+                <ScalarProperty Name="ProductGroup" ColumnName="ProductGroup" />
+                <ScalarProperty Name="DescriptionShort" ColumnName="DescriptionShort" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

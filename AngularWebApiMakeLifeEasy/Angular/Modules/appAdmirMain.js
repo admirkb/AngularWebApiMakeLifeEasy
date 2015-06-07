@@ -9,7 +9,7 @@
         'appWebApi',
 
         // 3rd Party Modules
-
+        'ui.bootstrap',
         ])
 
 

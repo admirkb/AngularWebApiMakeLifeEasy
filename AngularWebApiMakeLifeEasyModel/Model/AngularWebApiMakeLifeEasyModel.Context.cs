@@ -28,5 +28,6 @@ namespace AngularWebApiMakeLifeEasyModel.Model
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<Band> Bands { get; set; }
+        public virtual DbSet<ProductFile> ProductFiles { get; set; }
     }
 }
