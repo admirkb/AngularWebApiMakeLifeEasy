@@ -1,0 +1,64 @@
+﻿<div style="background-color:black; border-width:2px; border-style:solid; border-color:white; border-radius:6px;">
+    <div class="modal-header" style="color:wheat;">
+        <h3 class="modal-title">{{ thedata.message }}AdGrid Server oData Properties</h3>
+    </div>
+
+    <div class="modal-body" style="color:wheat;background-color:transparent; overflow:hidden">
+        <b>{{ thedata.name }}</b>
+
+
+        <div ng-style="{ height: thedata.height + 'px'  }" style="width:60%; background-color:transparent;margin-left: auto; margin-right: auto; ">
+            <div ng-style="{ height: thedata.height + 'px'  }" style="width:100%; ">
+
+
+                <table style="width:10%; position:relative; background-color:transparent;">
+
+                    <tr>
+                        <th><div>Column Name</div></th>
+                        <th>Select By</th>
+                        <th>Order By</th>
+                        <th></th>
+                        <th>Filter By</th>
+
+
+                    </tr>
+
+                    <tr data-ng-repeat="(keyp, p) in propertiesObject.propertiesList" ng-if="p.columnName != '$id'">
+                        <td style="text-align:left;cursor:pointer"><div ng-bind="p.columnName"></div></td>
+                        <td style="text-align:left;cursor:pointer"><input type="checkbox" ng-model="p.selectedSelectValue" ng-true-value="true" ng-false-value="false" /></td>
+                        <td style="text-align:left;cursor:pointer"><input type="checkbox" ng-model="p.selectedOrderByValue" ng-true-value="true" ng-false-value="false" /></td>
+                        <td style="text-align:left;cursor:pointer"><input type="text" style="color:black;" /></td>
+                        <td style="text-align:left;cursor:pointer"><input type="checkbox" ng-model="p.selectedFilterByValue" ng-true-value="true" ng-false-value="false" /></td>
+                        <td></td>
+                    </tr>
+
+                </table>
+                <table style="width:10%; position:relative; background-color:transparent;white-space:nowrap">
+                    <tr>
+                        <td><div style="color:white">Top n records</div></td>
+                        <td><input style="color:black;width:70px;text-align:right" ng-model="propertiesObject.topBy" /></td>
+                    </tr>
+                    <tr>
+                        <td><div style="color:white">Skip n records</div></td>
+                        <td><input style="color:black;width:70px;text-align:right" ng-model="propertiesObject.skipBy" /></td>
+                    </tr>
+               </table>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()" style="background-color:red;">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()" style="background-color:gray;">Cancel</button>
+    </div>
+
+
+</div>

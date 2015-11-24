@@ -1,0 +1,59 @@
+﻿<style>
+    .app-modal-window .modal-dialog {
+        height: auto;
+        width: 70%;
+    }
+</style>
+<div style="background-color:black; border-width:2px; border-style:solid; border-color:white; border-radius:6px;">
+    <div class="modal-header" style="color:wheat;">
+        <h3 class="modal-title">{{ thedata['CompanyName'] }} . AdGrid New Record </h3>
+    </div>
+
+    <div class="modal-body" style="color:wheat;background-color:transparent; overflow:hidden">
+
+        <tabset style="min-height:140px;">
+            <tab heading="Heading">
+                <table style="width:10%; position:relative; background-color:transparent;vertical-align:top;">
+
+                    <!--<tr>
+                        <th><div>Column Name</div></th>
+                    </tr>-->
+
+                    <tr data-ng-repeat="(keyp, p) in keys">
+                        <td style="text-align:left;cursor:pointer"><div ng-bind="p.name"></div></td>
+                        <td><input type="text" ng-model="thedata[p.name]" style="color:black;width:200px;"></td>
+
+
+ 
+
+
+                    </tr>
+                </table>
+                <!--<tabset style="min-height:140px;">
+                    <tab heading="Border Properties ">
+                        <div ng-include="'Angular/Modules/GrandeGrid/Directives/html/TabGridClient1H.html'"></div>
+                    </tab>
+                    <tab heading="Properties 2">
+                        <div ng-include="'Angular/Modules/GrandeGrid/Directives/html/TabGridClient2H.html'"></div>
+                    </tab>
+                </tabset>-->
+            </tab>
+        </tabset>
+
+
+
+
+
+    </div>
+
+
+
+
+
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()" style="background-color:red;">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()" style="background-color:gray;">Cancel</button>
+    </div>
+
+
+</div>

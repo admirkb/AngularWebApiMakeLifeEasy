@@ -1,0 +1,162 @@
+﻿<form>
+    <table style="width:10%; position:relative; background-color:transparent;">
+
+        <tr>
+            <th><div>Column Name</div></th>
+
+            <th><div>Color Bottom</div></th>
+            <th><div>Color Top</div></th>
+            <th><div>Color Left</div></th>
+            <th><div>Color Right</div></th>
+            <th><div>Style Bottom</div></th>
+            <th><div>Style Top</div></th>
+            <th><div>Style Left</div></th>
+            <th><div>Style Right</div></th>
+            <th><div>Width Bottom</div></th>
+            <th><div>Width Top</div></th>
+            <th><div>Width Left</div></th>
+            <th><div>Width Right</div></th>
+            <th><div>Left Radius Bottom</div></th>
+            <th><div>Left Radius Top</div></th>
+            <th><div>Left Radius Left</div></th>
+            <th><div>Left Radius Right</div></th>
+            <th><div>Right Radius Bottom</div></th>
+            <th><div>Right Radius Top</div></th>
+            <th><div>Right Radius Left</div></th>
+            <th><div>Right Radius Right</div></th>
+
+
+        </tr>
+
+        <tr data-ng-repeat="(keyp, p) in clientPropertiesObject.propertiesList" ng-if="p.columnName != '$id'">
+            <td style="text-align:left;cursor:pointer"><div ng-bind="p.columnName.name"></div></td>
+
+            <td style="width:50px;">
+                <div style="width:inherit">
+                    <input ad-color-picker color="p.borderBottomColor" />
+                </div>
+            </td>
+            <td style="width:50px;">
+                <div style="width:inherit">
+                    <input ad-color-picker color="p.borderTopColor" />
+                </div>
+            </td>
+            <td style="width:50px;">
+                <div style="width:inherit">
+                    <input ad-color-picker color="p.borderLeftColor" />
+                </div>
+            </td>
+            <td style="width:50px;">
+                <div style="width:inherit">
+                    <input ad-color-picker color="p.borderRightColor" />
+                </div>
+            </td>
+
+
+            <td>
+                <div style=";background-color:orange;width:100%;">
+                    <div class="btn-group" dropdown style="width:inherit;background-color:orange">
+                        <table style="width:inherit">
+                            <tr>
+                                <td style="text-align:right;background-color:white;width:inherit">
+                                    <button style="width:100%;text-align:right" type="button" class="btn btn-xs btn-danger dropdown-toggle" dropdown-toggle>
+                                        {{p['borderBottomStyle']}}
+                                        <span class="caret"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="item in borderStyles">
+                                <div ng-click="setChoiceIndex($index, item, p ,'borderBottomStyle')" style="cursor:pointer;color:black"> {{item.value}}</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </td>
+
+            <td>
+                <div style=";background-color:orange;width:100%;">
+                    <div class="btn-group" dropdown style="width:inherit;background-color:orange">
+                        <table style="width:inherit">
+                            <tr>
+                                <td style="text-align:right;background-color:white;width:inherit">
+                                    <button style="width:100%;text-align:right" type="button" class="btn btn-xs btn-danger dropdown-toggle" dropdown-toggle>
+                                        {{p['borderTopStyle']}}
+                                        <span class="caret"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="item in borderStyles">
+                                <div ng-click="setChoiceIndex($index, item, p ,'borderTopStyle')" style="cursor:pointer;color:black"> {{item.value}}</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div style=";background-color:orange;width:100%;">
+                    <div class="btn-group" dropdown style="width:inherit;background-color:orange">
+                        <table style="width:inherit">
+                            <tr>
+                                <td style="text-align:right;background-color:white;width:inherit">
+                                    <button style="width:100%;text-align:right" type="button" class="btn btn-xs btn-danger dropdown-toggle" dropdown-toggle>
+                                        {{p['borderLeftStyle']}}
+                                        <span class="caret"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="item in borderStyles">
+                                <div ng-click="setChoiceIndex($index, item, p ,'borderLeftStyle')" style="cursor:pointer;color:black"> {{item.value}}</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div style=";background-color:orange;width:100%;">
+                    <div class="btn-group" dropdown style="width:inherit;background-color:orange">
+                        <table style="width:inherit">
+                            <tr>
+                                <td style="text-align:right;background-color:white;width:inherit">
+                                    <button style="width:100%;text-align:right" type="button" class="btn btn-xs btn-danger dropdown-toggle" dropdown-toggle>
+                                        {{p['borderRightStyle']}}
+                                        <span class="caret"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="item in borderStyles">
+                                <div ng-click="setChoiceIndex($index, item, p ,'borderRightStyle')" style="cursor:pointer;color:black"> {{item.value}}</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </td>
+
+
+            <td><input type="text" ng-model="p.borderBottomWidth" style="color:black;width:60px;text-align:right"></td>
+            <td><input type="text" ng-model="p.borderTopWidth" style="color:black;width:60px;text-align:right"></td>
+            <td><input type="text" ng-model="p.borderLeftWidth" style="color:black;width:60px;text-align:right"></td>
+            <td><input type="text" ng-model="p.borderRightWidth" style="color:black;width:60px;text-align:right"></td>
+            <td><input type="text" ng-model="p.borderBottomLeftRadius" style="color:black;width:60px;text-align:right"></td>
+            <td><input type="text" ng-model="p.borderTopLeftRadius" style="color:black;width:60px;text-align:right"></td>
+            <td><input type="text" ng-model="p.borderLeftLeftRadius" style="color:black;width:60px;text-align:right"></td>
+            <td><input type="text" ng-model="p.borderRightLeftRadius" style="color:black;width:60px;text-align:right"></td>
+            <td><input type="text" ng-model="p.borderBottomRightRadius" style="color:black;width:60px;text-align:right"></td>
+            <td><input type="text" ng-model="p.borderTopRightRadius" style="color:black;width:60px;text-align:right"></td>
+            <td><input type="text" ng-model="p.borderLeftRightRadius" style="color:black;width:60px;text-align:right"></td>
+            <td><input type="text" ng-model="p.borderRightRightRadius" style="color:black;width:60px;text-align:right"></td>
+
+
+
+        </tr>
+    </table>
+
+
+</form>

@@ -25,9 +25,12 @@ namespace AngularWebApiMakeLifeEasyModel.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<Band> Bands { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<ProductFile> ProductFiles { get; set; }
+        public virtual DbSet<Staff> Staffs { get; set; }
+        public virtual DbSet<Supplier> Suppliers { get; set; }
+        public virtual DbSet<Locale> Locales { get; set; }
+        public virtual DbSet<LocalesHistory> LocalesHistories { get; set; }
     }
 }

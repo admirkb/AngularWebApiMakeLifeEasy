@@ -12,7 +12,7 @@
 
         var directive = {
             compile: compile,
-            templateUrl: 'Angular/Modules/Main/Directives/html/adGridHeader.html',
+            templateUrl: 'Angular/Modules/GrandeGrid/Directives/html/adGridHeader.html',
             restrict: 'E',
  
         };
@@ -21,50 +21,13 @@
 
 
         function compile(element, attributes) {
-        function    paging(scope){
 
-                scope.totalItems = 0;
-                scope.currentPage = 1;
-                scope.maxSize = 15;
-                scope.tags = "";
-                scope.itemsPerPage = 8;
-
-                scope.setPage = function (pageNo) {
-                    scope.currentPage = pageNo;
-                };
-                scope.next = function () {
-
-                    //activate();
-                };
-
-                scope.pageChanged = function () {
-    
-
-                    var limit = scope.itemsPerPage;
-                    var begin = scope.itemsPerPage * (scope.currentPage - 1);
-                    scope.data = $filter('limitTo')(scope.dataFull, limit, begin);
-                    //activate();
-
-                    console.log('Page changed to: ' + scope.currentPage + " - limit: " + limit + " - begin: " + begin);
-
-
-                };
-
-                scope.$watch('itemsPerPage', function () {
-
-                    scope.maxSize = (scope.totalItems / scope.itemsPerPage) + 1;
-
-                    var limit = scope.itemsPerPage;
-                    var begin = scope.itemsPerPage * (scope.currentPage - 1);
-                    scope.data = $filter('limitTo')(scope.dataFull, limit, begin);
-                });
-            }
 
             function theStuff(scope, elem, attrs, controller, transcludeFn) {
 
 
                 scope.$on('fWebapi2.manageAll.query', function (e, eo) {
-                    scope.dataFull = eo.data;
+
                     scope.data = eo.data;
                     scope.keys = Object.keys(eo.data[0]);
         
@@ -76,12 +39,10 @@
                         scope.o[k]['filterBy'] = '';
                     });
 
-                    scope.totalItems = eo.data.length;
-                    scope.maxSize = (scope.totalItems / scope.itemsPerPage) + 1;
+                    //var keys = Object.keys(eo.data[0])
+                    //scope[eo.tableName + 'List'] = eo.data;
+                    //scope.keys = keys;
 
-                    var limit = scope.itemsPerPage;
-                    var begin = scope.itemsPerPage * (scope.currentPage - 1);
-                    scope.data = $filter('limitTo')(scope.dataFull, limit, begin);
 
                 });
 
@@ -280,7 +241,7 @@
                         //var size = 'lg';
                         //var modalInstance = $modal.open({
                         //    backdrop: 'static',
-                        //    templateUrl: 'Angular/Modules/Main/Directives/html/ProductsModal.html',
+                        //    templateUrl: 'Angular/Modules/GrandeGrid/Directives/html/ProductsModal.html',
                         //    controller: 'cProductsMaintModalInstanceCtrl',
                         //    size: size,
                         //    resolve: {
@@ -330,23 +291,6 @@
 
                     }
 
-
-                    // Paging
-
-                    paging(scope);
-
-                    scope.Test = function (colName, colValue) {
-
-                        var eo = new Object();
-                        eo.time = new Date();
-
-                        var searchObj = new Object();
-                        searchObj[colName] = colValue;
-
-                        //scope.data = $filter('filter')(scope.data, { description: 'Band 20' }, 'strict');
-                        scope.data = $filter('filter')(scope.dataFull, searchObj, 'strict');
-
-                    }
 
 
                     theStuff(scope, elem, attrs, controller, transcludeFn)

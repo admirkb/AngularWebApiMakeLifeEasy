@@ -6,6 +6,10 @@ using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
 
+using System.Web.Http.OData.Builder;
+using System.Web.Http.OData.Extensions;
+using AngularWebApiMakeLifeEasyModel.Model;
+
 namespace AngularWebApiMakeLifeEasy
 {
     public static class WebApiConfig
@@ -32,6 +36,18 @@ namespace AngularWebApiMakeLifeEasy
             var json = config.Formatters.JsonFormatter;
             json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
             config.Formatters.Remove(config.Formatters.XmlFormatter);
+
+
+            ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
+            builder.EntitySet<Supplier>("oDataSuppliers");
+            builder.EntitySet<Customer>("oDataCustomers");
+            var productFiles = builder.EntitySet<ProductFile>("oDataProductFiles");
+            productFiles.EntityType.HasKey(c => c.CustomerId); // tell the key explicitly through code
+            productFiles.EntityType.HasKey(c => c.ProductCode); // tell the key explicitly through code
+
+            builder.EntitySet<Staff>("oDataStaffs");
+            builder.EntitySet<Band>("oDataBands");
+            config.Routes.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
 
         }
     }

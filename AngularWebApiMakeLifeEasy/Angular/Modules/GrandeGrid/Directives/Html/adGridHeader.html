@@ -1,0 +1,265 @@
+﻿<style>
+
+    .odd {
+  background-color: {{bgColorOdd}};
+}
+.even {
+  background-color: {{bgColorEven}};
+}
+
+</style>
+<div style="border-style:solid; border-width:2px; border-color:white; border-radius:4px;">
+
+    <div style="width:100%; position:relative;overflow-x:scroll">
+        <div style="width:100%; position:absolute; background-color:#D00A00; opacity:.3" ></div>
+
+
+        <table>
+            <tr>
+                <td>
+                    <div style="color:white; font-size:16px;">
+                        Search Table
+                    </div>
+                </td>
+                <td>
+                    <input type="text" ng-model="searchTableName" style="color:black; font-size:16px;" />
+                </td>
+                <td>
+                    <div style="color:white; font-size:16px;">
+                        Server OrderBy
+                    </div>
+                </td>
+                <td>
+                    <input type="text" ng-model="serverOrderBy" style="color:black; font-size:16px;" />
+                </td>
+                <td>
+                    <div style="color:white; font-size:16px;">
+                        Server Filter
+                    </div>
+                </td>
+                <td>
+                    <input type="text" ng-model="serverFilter" style="color:black; font-size:16px;" />
+                </td>
+                <td>
+                    <div style="color:white; font-size:16px;">
+                        Server SelectBy
+                    </div>
+                </td>
+                <td>
+                    <input type="text" ng-model="serverSelectBy" style="color:black; font-size:16px;" />
+                </td>
+
+                <td>
+                    <div style="color:white; font-size:16px;">
+                        Server TopBy
+                    </div>
+                </td>
+                <td>
+                    <input type="text" ng-model="serverTopBy" style="color:black; font-size:16px;" />
+                </td>
+                <td>
+                    <div style="color:white; font-size:16px;">
+                        Server SkipBy
+                    </div>
+                </td>
+                <td>
+                    <input type="text" ng-model="serverSkipBy" style="color:black; font-size:16px;" />
+                </td>
+                <td>
+                    <button ng-click="changeTable(searchTableName)" class="btn  btn-xs" style="font-size:16px;white-space:nowrap; background-color:red;">Refresh</button>
+                </td>
+                <td>
+                    <button ng-click="getProperties(searchTableName)" class="btn  btn-xs" style="font-size:16px;white-space:nowrap; background-color:red;">Server Properties</button>
+                </td>
+                <td>
+                    <button ng-click="getClientProperties(searchTableName)" class="btn  btn-xs" style="font-size:16px;white-space:nowrap; background-color:red;">Client Properties</button>
+                </td>
+          </tr>
+        </table>
+
+
+
+        <table>
+            <tr>
+                <td class="admir_1">
+                    <pagination items-per-page="itemsPerPage" ng-change="pageChanged()" total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true"></pagination>
+
+                </td>
+                <td>Page Size</td>
+                <td><input type="text" style="color:black;width:30px;text-align:right" ng-model="itemsPerPage" /></td>
+            </tr>
+        </table>
+        <table style="width:10%; position:relative; background-color:transparent;">
+
+            <tr>
+                <th style="text-align:left;cursor:pointer" data-ng-repeat="(keyk, k) in keys" ng-if="k != '$id'" ng-click='changeClientOrderBy(keyk)'>
+                    <div ng-bind="o[k].displayName"
+                         data-ng-style="{
+                             fontFamily: o[k].fontFamilyH  ,
+                             fontSize: o[k].fontSizeH + 'px'  ,
+                             fontWeight: o[k].fontWeightH  ,
+                             fontStyle: o[k].fontStyleH  ,
+
+                             color: o[k].colorH  ,
+                             backgroundColor: o[k].bgColorH,
+
+                             width: o[k].widthH  ,
+                             height:  '100%',
+
+                             overflow:o[k].overflowH,
+                             whiteSpace:o[k].whiteSpaceH,
+                             textDecoration:o[k].textDecorationH,
+                             textAlign:o[k].textAlignH,
+
+                             borderBottomColor:o[k].borderBottomColorH,
+                             borderTopColor:o[k].borderTopColorH,
+                             borderLeftColor:o[k].borderLeftColorH,
+                             borderRightColor:o[k].borderRightColorH,
+                             borderBottomStyle:o[k].borderBottomStyleH,
+                             borderTopStyle:o[k].borderTopStyleH,
+                             borderLeftStyle:o[k].borderLeftStyleH,
+                             borderRightStyle:o[k].borderRightStyleH,
+                             borderBottomWidth:o[k].borderBottomWidthH + 'px',
+                             borderTopWidth:o[k].borderTopWidthH + 'px',
+                             borderLeftWidth:o[k].borderLeftWidthH + 'px',
+                             borderRightWidth:o[k].borderRightWidthH + 'px',
+                             borderBottomLeftRadius:o[k].borderBottomLeftRadiusH + 'px',
+                             borderTopLeftRadius:o[k].borderTopLeftRadiusH + 'px',
+                             borderLeftLeftRadius:o[k].borderLeftLeftRadiusH + 'px',
+                             borderRightLeftRadius:o[k].borderRightLeftRadiusH + 'px',
+                             borderBottomRightRadius:o[k].borderBottomRightRadiusH + 'px',
+                             borderTopRightRadius:o[k].borderTopRightRadiusH + 'px',
+                             borderLeftRightRadius:o[k].borderLeftRightRadiusH + 'px',
+                             borderRightRightRadius:o[k].borderRightRightRadiusH + 'px',
+
+
+                         }">
+
+
+                    </div>
+            </th>
+                <th></th>
+
+            </tr>
+            <tr >
+                <td style="text-align:left;color:black;" data-ng-repeat="(keyk, k) in keys" ng-if="k != '$id'">
+                    <table style="width:100%; background-color:transparent">
+                        <tr>
+                            <td><input data-ng-style="{width:  o[k].width}" type="text" ng-model="search" ng-change="Test(k, search)" /></td>
+                            <!--<td><button style="color:white;background-color:#D00A00;" class="btn  btn-xs" ng-click="Test(p, search)">Search</button></td>-->
+                        </tr>
+                    </table>
+                </td>
+                <td></td>
+
+            </tr>
+
+            <!--  data-ng-style="{backgroundColor: 'green' }"  -->
+            <tr data-ng-repeat="(keyp, p) in data" ng-class-odd="'odd'" ng-class-even="'even'" >
+                <td ng-style="{
+
+                    backgroundColor: 'transparent',
+
+
+                    }" style="vertical-align:top; white-space:normal" data-ng-repeat="(keyk, k) in keys" ng-if="k != '$id'">
+                    <img ng-if="k == 'image'" ng-src="{{p[k]}}" data-ng-style="{backgroundSize: '100% 100%' , backgroundRepeat: 'no-repeat' , width: o[k].width +  'px' , height: o[k].height + 'px'  }" />
+                    <div ng-if="!p.isEditable">
+                        <div style="border-bottom-left-radius" ng-if="k != 'image'" ng-bind="p[k]"
+                             data-ng-style="{
+
+                             fontFamily: o[k].fontFamily  ,
+                             fontSize: o[k].fontSize + 'px'  ,
+                             fontWeight: o[k].fontWeight  ,
+                             fontStyle: o[k].fontStyle  ,
+
+                             color: p.getColor (o[k].color)  ,
+                             backgroundColor  : p.getColor (o[k].bgColor, p, k, o),
+
+                             width: o[k].width ,
+                             height:  '100%',
+
+                             overflow:o[k].overflow,
+                             whiteSpace:o[k].whiteSpace,
+                             textDecoration:o[k].textDecoration,
+                             textAlign:o[k].textAlign,
+
+
+                             borderBottomColor:o[k].borderBottomColor,
+                             borderTopColor:o[k].borderTopColor,
+                             borderLeftColor:o[k].borderLeftColor,
+                             borderRightColor:o[k].borderRightColor,
+                             borderBottomStyle:o[k].borderBottomStyle,
+                             borderTopStyle:o[k].borderTopStyle,
+                             borderLeftStyle:o[k].borderLeftStyle,
+                             borderRightStyle:o[k].borderRightStyle,
+                             borderBottomWidth:o[k].borderBottomWidth + 'px',
+                             borderTopWidth:o[k].borderTopWidth + 'px',
+                             borderLeftWidth:o[k].borderLeftWidth + 'px',
+                             borderRightWidth:o[k].borderRightWidth + 'px',
+                             borderBottomLeftRadius:o[k].borderBottomLeftRadius + 'px',
+                             borderTopLeftRadius:o[k].borderTopLeftRadius+ 'px',
+                             borderLeftLeftRadius:o[k].borderLeftLeftRadius+ 'px',
+                             borderRightLeftRadius:o[k].borderRightLeftRadius+ 'px',
+                             borderBottomRightRadius:o[k].borderBottomRightRadius+ 'px',
+                             borderTopRightRadius:o[k].borderTopRightRadius+ 'px',
+                             borderLeftRightRadius:o[k].borderLeftRightRadius+ 'px',
+                             borderRightRightRadius:o[k].borderRightRightRadius+ 'px',
+
+                              }">
+                        </div>
+                    </div>
+                    <div ng-if="p.isEditable">
+                        <input type="text" ng-if="k != 'image'" ng-model="p[k]"
+                               data-ng-style="{
+
+                             fontFamily: o[k].fontFamily  ,
+                             fontSize: o[k].fontSize + 'px'  ,
+                             fontWeight: o[k].fontWeight  ,
+                             fontStyle: o[k].fontStyle  ,
+
+                             color: 'black'  ,
+                             backgroundColor: 'white',
+
+                             width: o[k].width ,
+                             height:  '100%' 
+                               
+                               }" />
+                    </div>
+                </td>
+                <td style="background-color:black;vertical-align:top; white-space:nowrap">
+                    <button style="color:white;background-color:#D00A00;" class="btn  btn-xs" ng-disabled="p.isDisabled" ng-click="p.Edit()" ng-if="!p.isEditable">Edit</button>
+                    <button style="color:white;background-color:#D00A00;" class="btn  btn-xs" ng-click="p.Update(p, keyp)" ng-if="p.isEditable">Update</button>
+                    <button style="color:white;background-color:#D00A00;" class="btn  btn-xs" ng-disabled="p.isDisabled" ng-click="p.Delete()" ng-if="!p.isEditable">Delete</button>
+                    <button style="color:white;background-color:#D00A00;" class="btn  btn-xs" ng-click="p.Cancel(a, keya)" ng-if="p.isEditable">Cancel</button>
+                    <button style="color:white;background-color:#D00A00;" class="btn  btn-xs" ng-disabled="p.isDisabled" ng-click="p.Run(p, keyp)" ng-if="!p.isEditable">Run</button>
+                    <button style="color:white;background-color:#D00A00;" class="btn  btn-xs" ng-disabled="p.isDisabled" ng-click="p.RunColChangeTest(p, keyp)" ng-if="!p.isEditable">RunColChangeTest</button>
+                </td>
+
+            </tr>
+
+            <!--  data-ng-style="{backgroundColor: 'green' }"  -->
+            <!--<tr data-ng-repeat="(keyp, p) in data" ng-class-odd="'odd'" ng-class-even="'even'">
+                <td colspan="14">
+                    <ad-grid2-line p="p" keys="keys" o="o"></ad-grid2-line>
+                </td>
+            </tr>-->
+
+            <!--<tr data-ng-repeat="(keyp, p) in data" ng-class-odd="'odd'" ng-class-even="'even'">
+                    <ad-grid2-line p="p" keys="keys" o="o"></ad-grid2-line>
+            </tr>-->
+
+
+        </table>
+    </div>
+
+</div>
+<!--
+
+    // Handle expressions
+                            color: (k == 'supplierId' && (p.supplierId > 3  && p.supplierId < 6  )  ) ? o[k].bgColor : o[k].color,
+
+                            backgroundColor: (k == 'supplierId' && (p.supplierId > 3  && p.supplierId < 6  )  ) ? o[k].color : o[k].bgColor,
+
+
+
+-->

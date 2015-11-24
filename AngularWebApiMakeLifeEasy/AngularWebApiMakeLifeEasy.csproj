@@ -72,6 +72,12 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Data.OData.5.6.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.OData.Core">
+      <HintPath>..\packages\Microsoft.OData.Core.6.11.0\lib\portable-net40+sl5+wp8+win8+wpa\Microsoft.OData.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.OData.Edm">
+      <HintPath>..\packages\Microsoft.OData.Edm.6.11.0\lib\portable-net40+sl5+wp8+win8+wpa\Microsoft.OData.Edm.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
@@ -108,9 +114,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Spatial">
+      <HintPath>..\packages\Microsoft.Spatial.6.11.0\lib\portable-net40+sl5+wp8+win8+wpa\Microsoft.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -150,6 +159,9 @@
     <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.OData">
+      <HintPath>..\packages\Microsoft.AspNet.OData.5.6.0\lib\net45\System.Web.OData.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -233,9 +245,20 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BandsController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\CustomersUIController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocalesController.cs" />
+    <Compile Include="Controllers\LocalesHistoriesController.cs" />
+    <Compile Include="Controllers\oDataBandsController.cs" />
+    <Compile Include="Controllers\oDataCustomersController.cs" />
+    <Compile Include="Controllers\oDataProductFilesController.cs" />
+    <Compile Include="Controllers\oDataStaffsController.cs" />
+    <Compile Include="Controllers\oDataSuppliersController.cs" />
     <Compile Include="Controllers\ProductFilesController.cs" />
+    <Compile Include="Controllers\StaffsController.cs" />
     <Compile Include="Controllers\SuppliersController.cs" />
+    <Compile Include="Controllers\SuppliersUIController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -250,21 +273,42 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Angular\Modules\appAdmirMain.js" />
-    <Content Include="Angular\Modules\Main\Controllers\cMain.js" />
-    <Content Include="Angular\Modules\Main\Controllers\cMain3.js" />
-    <Content Include="Angular\Modules\Main\Controllers\cMain2.js" />
-    <Content Include="Angular\Modules\Main\Directives\adGrid2.js" />
-    <Content Include="Angular\Modules\Main\Directives\Html\adGridHeader.html" />
+    <Content Include="Angular\Modules\GrandeGrid\appGrandeGrid.js" />
+    <Content Include="Angular\Modules\GrandeGrid\Controllers\cMain.js" />
+    <Content Include="Angular\Modules\GrandeGrid\Controllers\cMain2.js" />
+    <Content Include="Angular\Modules\GrandeGrid\Directives\adColorPicker.js" />
+    <Content Include="Angular\Modules\GrandeGrid\Directives\adGrandeGrid.js" />
+    <Content Include="Angular\Modules\GrandeGrid\Directives\adGrid2.js" />
+    <Content Include="Angular\Modules\GrandeGrid\Directives\adGrid2Line.js" />
+    <Content Include="Angular\Modules\GrandeGrid\Directives\adSpinner.js" />
+    <Content Include="Angular\Modules\GrandeGrid\Directives\Html\adGrandeGridNewRecordModal.html" />
+    <Content Include="Angular\Modules\GrandeGrid\Directives\Html\adGrandeGridClientModal.html" />
+    <Content Include="Angular\Modules\GrandeGrid\Directives\Html\adGridClientModal.html" />
+    <Content Include="Angular\Modules\GrandeGrid\Directives\Html\adGrandeGridHeader.html" />
+    <Content Include="Angular\Modules\GrandeGrid\Directives\Html\adGridLine.html" />
+    <Content Include="Angular\Modules\GrandeGrid\Directives\Html\adGridHeader.html" />
+    <Content Include="Angular\Modules\GrandeGrid\Directives\Html\adGrandeGridModal.html" />
+    <Content Include="Angular\Modules\GrandeGrid\Directives\Html\adGridModal.html" />
+    <Content Include="Angular\Modules\GrandeGrid\Directives\Html\deleteConfModal.html" />
+    <Content Include="Angular\Modules\GrandeGrid\Directives\Html\spinnerD.html" />
+    <Content Include="Angular\Modules\GrandeGrid\Directives\Html\TabGridClient1.html" />
+    <Content Include="Angular\Modules\GrandeGrid\Directives\Html\TabGridClient1H.html" />
+    <Content Include="Angular\Modules\GrandeGrid\Directives\Html\TabGridClient2.html" />
+    <Content Include="Angular\Modules\GrandeGrid\Directives\Html\TabGridClient2H.html" />
+    <Content Include="Angular\Modules\GrandeGrid\Factories\fCommon.js" />
     <Content Include="Angular\Modules\WebApi\appWebApi.js" />
     <Content Include="Angular\Modules\WebApi\Directives\adGrid2 remove.js" />
     <Content Include="Angular\Modules\WebApi\Directives\adGrid remove.js" />
     <Content Include="Angular\Modules\WebApi\Directives\adWebapi2.js" />
+    <Content Include="Angular\Modules\WebApi\Factories\foDataApi1.js" />
     <Content Include="Angular\Modules\WebApi\Factories\fWebapi2.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\Admir.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\spectrum.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -295,8 +339,11 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="Images\Admir01-BlackBackground.png" />
-    <Content Include="index2.html" />
+    <Content Include="Images\DownArrow.png" />
     <Content Include="index.html" />
+    <Content Include="index2.html" />
+    <Content Include="indexGrandeGrid_1.html" />
+    <Content Include="indexGrandeGrid_2.html" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
@@ -338,6 +385,7 @@
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
+    <None Include="Properties\PublishProfiles\GrandeGrid.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Icon.png" />
     <Content Include="Scripts\bootstrap.js" />
@@ -1099,8 +1147,10 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\spectrum.js" />
     <Content Include="Sql Scripts\Create Database Admir.AngularWebApiMakeLifeEasy.sql" />
     <Content Include="Sql Scripts\Create Tables Admir.AngularWebApiMakeLifeEasy.sql" />
+    <Content Include="Test-ng-class.html" />
     <Content Include="useful.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -1118,11 +1168,21 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\CustomersUI\Create.cshtml" />
+    <Content Include="Views\CustomersUI\Delete.cshtml" />
+    <Content Include="Views\CustomersUI\Details.cshtml" />
+    <Content Include="Views\CustomersUI\Edit.cshtml" />
+    <Content Include="Views\CustomersUI\Index.cshtml" />
+    <Content Include="Views\Test\Test.cshtml" />
+    <Content Include="Views\SuppliersUI\Create.cshtml" />
+    <Content Include="Views\SuppliersUI\Delete.cshtml" />
+    <Content Include="Views\SuppliersUI\Details.cshtml" />
+    <Content Include="Views\SuppliersUI\Edit.cshtml" />
+    <Content Include="Views\SuppliersUI\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Angular\Modules\Main\Controllers\Html\" />
-    <Folder Include="Angular\Modules\Main\Factories\" />
-    <Folder Include="Angular\Modules\Main\Services\" />
+    <Folder Include="Angular\Modules\GrandeGrid\Controllers\Html\" />
+    <Folder Include="Angular\Modules\GrandeGrid\Services\" />
     <Folder Include="Angular\Modules\WebApi\Controllers\" />
     <Folder Include="App_Data\" />
   </ItemGroup>

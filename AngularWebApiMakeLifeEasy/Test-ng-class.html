@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <style>
+
+
+
+
+        @keyframes my1 {
+            from {
+                left: 0px;
+                top: 0px;
+                background-color:orange;
+            }
+
+            to {
+                left: 100px;
+                top: 100px;
+                background-color:red;
+
+            }
+        }
+
+        @keyframes my2 {
+            from {
+                left: 100px;
+                top: 100px;
+                background-color:red;
+            }
+
+            to {
+                left: 0px;
+                top: 0px;
+                background-color:orange;
+
+            }
+        }
+
+     @keyframes my3 {
+            from {
+                left: 0px;
+                top: 0px;
+
+            }
+
+            to {
+                left: 1000px;
+                top: 500px;
+
+
+            }
+        }
+
+
+        .myClass1 {
+            position: relative;
+            animation: my1 1s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+        }
+
+        .myClass2 {
+            position: relative;
+            animation: my2 1s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+        }
+        .myClass3 {
+            position: relative;
+            animation: my3 5s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+        }
+
+
+        .has-error {
+    color: red;
+    background-color: yellow;
+                position: relative;
+            animation: my1 1s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+}
+        
+        
+        
+        .strike {
+    text-decoration: line-through;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.expression {
+    font-size: 40px;
+}
+
+
+    </style>
+
+</head>
+<body ng-app="appAdmirMain" ng-controller="cMain">
+
+
+    <div ng-bind="isActive" style="width:100px; height:100px; background-color:orange;" 
+         
+         ng-class="{ true: 'myClass1', false: 'myClass2'}[isActive]"></div>
+
+
+    <div style="border-left-width:300px; width:100px; height:100px; background-color:orange;"
+          ng-class="{strike: deleted, bold: important, 'has-error': error}">
+    </div>
+
+
+    <button ng-click="isActive=!isActive">Click</button>
+
+    <p ng-class="{expression: 1==1, strike: deleted, bold: important, 'has-error': error}">Map Syntax Example</p>
+
+
+    <label>
+        <input type="checkbox" ng-model="deleted">
+        deleted (apply "strike" class)
+    </label><br>
+    <label>
+        <input type="checkbox" ng-model="important">
+        important (apply "bold" class)
+    </label><br>
+    <label>
+        <input type="checkbox" ng-model="error">
+        error (apply "has-error" class)
+    </label><br>
+    <label>
+        <input type="checkbox" ng-model="calc">
+        expression (calc)
+    </label>
+
+
+
+    <div ng-bind="anyState" style="border-top-width:300px; left:300px; width:100px; height:100px; background-color:blue;"
+         ng-class="{ 'any1': 'myClass1', 'any2': 'myClass2', 'any3': 'myClass3'}[anyState]"></div>
+
+
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-resource.min.js"></script>
+    <script src="Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+    <script>
+
+        (function () {
+            'use strict';
+
+            angular
+                .module('appAdmirMain', [
+                'appWebApi',
+                'ui.bootstrap',
+                ])
+
+
+        })();
+
+        (function () {
+            'use strict';
+
+            angular.module('appWebApi', [
+                'ngResource',
+            ]);
+        })();
+
+        (function () {
+            'use strict';
+
+            angular
+                .module('appAdmirMain')
+                .controller('cMain', cMain);
+
+            cMain.$inject = ['$scope'];
+
+            function cMain($scope) {
+
+                var vm = this;
+                vm.title = 'cMain';
+
+                $scope.stockValue = 0;
+                //$scope.isActive = true;
+
+                $scope.anyState = 'any1';
+
+                activate();
+
+                function activate() {
+
+                    console.log("appAdmirMain.activate called in cMain");
+                }
+            }
+        })();
+
+
+    </script>
+
+</body>
+</html>

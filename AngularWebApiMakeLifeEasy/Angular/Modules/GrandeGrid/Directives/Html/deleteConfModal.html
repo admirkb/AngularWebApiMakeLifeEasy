@@ -1,0 +1,52 @@
+﻿<script src="/scripts/spectrum.js"></script>
+<div style="background-color:black; border-width:2px; border-style:solid; border-color:white; border-radius:6px;">
+    <div class="modal-header" style="color:wheat;">
+        <h3 class="modal-title">Confirm Delete</h3>
+    </div>
+
+    <div class="modal-body" style="color:wheat;background-color:transparent;">
+        Are you sure you want to delete this item?
+        <b>{{ thedata.name }}</b>
+
+        <div ng-style="{ height: thedata.height + 'px'  }" style="width:60%; background-color:transparent;margin-left: auto; margin-right: auto; ">
+            <div ng-style="{ height: thedata.height + 'px'  }" style="width:100%; overflow:hidden; ">
+
+
+                <table style="width:100%; position:relative; background-color:transparent;">
+                    <tr>
+                        <td>
+                            <img ng-show="thedata.image != null" ng-src="{{thedata.image}}" ng-style="{width: thedata.width + 'px',height: thedata.height + 'px'}" />
+                        </td>
+                        <td>
+                            <img ng-show="thedata.image == null" ng-src="{{thedata.filepath}}" ng-style="{width: thedata.width + 'px',height: thedata.height + 'px'}" />
+                        </td>
+                    </tr>
+                    <!--<tr>
+                        <td ng-style="{ height: clockHeight/2 + 'px' , width:  '100px'  }" style="vertical-align:top; background-color:yellow; -ms-transform:scaleX(.5) scaleY(.5); -ms-transform-origin: 50% 0%; background-color:transparent; -webkit-transform:scaleX(.5) scaleY(.5);-webkit-transform-origin: 0% 0%; -moz-transform:scaleX(.5) scaleY(.5);-moz-transform-origin: 0% 0%;" >
+
+                    </td>
+                    </tr>-->
+
+
+
+                </table>
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()" style="background-color:red;">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()" style="background-color:gray;">Cancel</button>
+    </div>
+    <ad-media-upload style="display:none;"></ad-media-upload>
+
+</div>

@@ -1,0 +1,108 @@
+﻿<form>
+    <table style="width:10%; position:relative; background-color:transparent;">
+
+        <tr>
+            <th><div>Column Name</div></th>
+
+            <th><div>Overflow</div></th>
+            <th><div>White Space</div></th>
+
+
+        </tr>
+
+        <tr data-ng-repeat="(keyp, p) in clientPropertiesObject.propertiesList" ng-if="p.columnName != '$id'">
+            <td style="text-align:left;cursor:pointer"><div ng-bind="p.columnName.name"></div></td>
+
+            <td>
+                <div style=";background-color:orange;width:100%;">
+                    <div class="btn-group" dropdown style="width:inherit;background-color:orange">
+                        <table style="width:inherit">
+                            <tr>
+                                <td style="text-align:right;background-color:white;width:inherit">
+                                    <button style="width:100%;text-align:right" type="button" class="btn btn-xs btn-danger dropdown-toggle" dropdown-toggle>
+                                        {{p['overflowH']}}
+                                        <span class="caret"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="item in overflows">
+                                <div ng-click="setChoiceIndex($index, item, p ,'overflowH')" style="cursor:pointer;color:black"> {{item.value}}</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div style=";background-color:orange;width:100%;">
+                    <div class="btn-group" dropdown style="width:inherit;background-color:orange">
+                        <table style="width:inherit">
+                            <tr>
+                                <td style="text-align:right;background-color:white;width:inherit">
+                                    <button style="width:100%;text-align:right" type="button" class="btn btn-xs btn-danger dropdown-toggle" dropdown-toggle>
+                                        {{p['whiteSpaceH']}}
+                                        <span class="caret"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="item in whiteSpaces">
+                                <div ng-click="setChoiceIndex($index, item, p ,'whiteSpaceH')" style="cursor:pointer;color:black"> {{item.value}}</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div style=";background-color:orange;width:100%;">
+                    <div class="btn-group" dropdown style="width:inherit;background-color:orange">
+                        <table style="width:inherit">
+                            <tr>
+                                <td style="text-align:right;background-color:white;width:inherit">
+                                    <button style="width:100%;text-align:right" type="button" class="btn btn-xs btn-danger dropdown-toggle" dropdown-toggle>
+                                        {{p['textDecorationH']}}
+                                        <span class="caret"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="item in textDecorations">
+                                <div ng-click="setChoiceIndex($index, item, p ,'textDecorationH')" style="cursor:pointer;color:black"> {{item.value}}</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div style=";background-color:orange;width:100%;">
+                    <div class="btn-group" dropdown style="width:inherit;background-color:orange">
+                        <table style="width:inherit">
+                            <tr>
+                                <td style="text-align:right;background-color:white;width:inherit">
+                                    <button style="width:100%;text-align:right" type="button" class="btn btn-xs btn-danger dropdown-toggle" dropdown-toggle>
+                                        {{p['textAlignH']}}
+                                        <span class="caret"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="item in textAligns">
+                                <div ng-click="setChoiceIndex($index, item, p ,'textAlignH')" style="cursor:pointer;color:black"> {{item.value}}</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </td>
+
+
+
+
+        </tr>
+    </table>
+
+
+</form>

@@ -1,0 +1,127 @@
+﻿<style>
+
+        .tableMain {
+            position:relative;
+            width:100%;
+            height:16px;
+            background-color:green;
+            border-collapse:collapse;
+            font-size:0px;
+            
+        }        
+        .tableControls {
+            background-color:transparent;
+            border-collapse:collapse;
+        }
+    </style>
+
+<table class="tableMain" style="background-color:white;border-spacing:0px 0px;  " id="t1">
+    <tr style="height:0%;">
+        <td style="background-color:snow;">
+            <img  ng-src="{{imgsrc}}"  alt="" ng-style="{width:imgsrcW + 'px', height:imgsrcH + 'px'}" style="margin:0px 0px 0px 0px" />
+        </td>
+
+        <td style="width:96%;height:100%;background-color:transparent;border-collapse:collapse; padding:0px; margin:0px;  border-width:0px; border-style:solid" >
+            <table style="border-spacing:0px 0px; width:100%;height:100%;background-color:transparent;border-collapse:collapse; padding:0px; margin:0px;">
+                <tr >
+                    <td style="border-width:0px; width:100%;height:100%;background-color:red;border-collapse:collapse; padding:0px; margin:0px;">
+                        <input id="input" type="text" style="font-size:14px; border-collapse:collapse; text-align:right;width:100%;height:100%;" data-ng-model="value" ng-keydown="onKeyup($event, 'value')"/>
+                    </td>
+                </tr>
+                <tr >
+                    <td style="border-width:0px; width:100%;height:0%;background-color:red;border-collapse:collapse; padding:0px; margin:0px;">
+
+                    </td>
+                </tr>
+
+            </table>
+      
+
+        </td>
+        <td style="width:4%;height:100%;background-color:transparent;border-collapse:collapse; padding:0px; margin:0px;  border-width:0px; border-style:solid" >
+            <table style="border-spacing:0px 0px; width:100%;height:100%;background-color:transparent;border-collapse:collapse; padding:0px; margin:0px">
+                <tr >
+                    <td style="text-align:right; width:100%;height:50%;background-color:green;border-collapse:collapse; padding:0px; margin:0px; min-width:30px; min-height:8px">
+
+                                            <button style="font-size:0px;  height100%; padding:0px; margin:0px;  width:94%;" data-ng-model="inc" ng-click="Inc(inc)" >
+                            <img style="width:100%; height:6px; background-color:transparent;" src="Images/circle.svg"  />
+                                                </button>
+    
+                    </td>
+                </tr>
+                <tr >
+                    <td style="text-align:right; width:100%;height:50%;background-color:green;border-collapse:collapse; padding:0px; margin:0px; min-width:30px; min-height:8px">
+
+                                            <button style="font-size:0px;  height100%; padding:0px; margin:0px;  width:94%;" data-ng-model="inc" ng-click="Inc(-inc)" >
+                            <img style="width:100%; height:6px; background-color:transparent;" src="Images/circle.svg"  />
+                                                </button>
+    
+                    </td>
+                </tr>
+
+            </table>
+      
+
+        </td>
+
+
+
+
+    </tr>
+</table>
+
+<script>
+
+    var ua = window.navigator.userAgent
+    var msie = ua.indexOf("MSIE ")
+
+    if (msie > 0) {
+
+        var t1 = document.getElementById("t1").clientHeight;
+
+        //var divC1 = document.getElementById("divC1");
+        //alert(divC1).clientHeight;
+
+        //var divC2 = document.getElementById("divC2");
+        //divC1.style.height = tdC1 + "px";
+        //divC2.style.height = tdC1 + "px";
+        //document.getElementById("input").style.height = (tdC1-4) *4 * .5  + "px";
+        //document.getElementById("img1").style.height = t1/8 + "px";
+        //document.getElementById("img2").style.height = t1 + "px";
+        //document.getElementById("img1").style.width = t1 + "px";
+        //document.getElementById("img2").style.width = t1 + "px";
+        //alert(document.getElementById("input").style.height = tdC1 * 2);
+
+        //alert(document.getElementById("t1").clientHeight)
+        //alert(document.getElementById("t1").offsetHeight)
+        //alert(document.getElementById("t1").offsetParent.offsetHeight)
+        //alert(document.getElementById("t1").offsetParent.clientHeight)
+        //alert(document.getElementById("t1").offsetParent.scrollHeight)
+
+        //t1 = document.getElementById("t1").offsetParent.offsetHeight - 12;
+        //document.getElementById("input").style.height = t1 + "px";
+
+
+
+    }
+    else {
+
+        //var tdC1 = document.getElementById("tdC1").clientHeight ;
+        //var divC1 = document.getElementById("divC1");
+        //var divC2 = document.getElementById("divC2");
+        //divC1.style.height = tdC1 + "px";
+        //divC2.style.height = tdC1 + "px";
+        //document.getElementById("input").style.height = tdC1 * 2 + "px";
+        //alert(document.getElementById("input").style.height = tdC1 * 2);
+
+    }
+    if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+        //var tdC1 = document.getElementById("tdC1").clientHeight / 4;
+        //var divC1 = document.getElementById("divC1");
+        //var divC2 = document.getElementById("divC2");
+        //divC1.style.height = tdC1 + "px";
+        //divC2.style.height = tdC1 + "px";
+        //document.getElementById("input").style.height = tdC1 * 2 + "px";
+    }
+
+</script>

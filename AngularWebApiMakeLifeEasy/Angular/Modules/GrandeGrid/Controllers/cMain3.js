@@ -60,7 +60,7 @@
 
         });
 
-        activate();
+        //activate();
 
         function activate() {
 

@@ -129,3 +129,122 @@
 
 
             //});
+
+
+			        //$scope.selectedSelectValueChanged = function (t) {
+
+        //    var found = $filter('filter')($scope.selectedSelectValueList, t.p, 'strict');
+
+        //    if (found.length == 0) {
+        //        $scope.selectedSelectValueList.unshift(t.p);
+        //    }
+        //    else {
+        //        var pos = $scope.selectedSelectValueList.indexOf(t.p);
+        //        $scope.selectedSelectValueList.splice(pos,1);
+        //    }
+        //    console.dir($scope.selectedSelectValueList)
+
+        //}
+
+
+        //$scope.selectedOrderByValueChanged = function (t) {
+
+        //    var found = $filter('filter')($scope.selectedOrderByValueList, t.p, 'strict');
+
+        //    if (found.length == 0) {
+        //        $scope.selectedOrderByValueList.push(t.p);
+        //    }
+        //    else {
+        //        var pos = $scope.selectedOrderByValueList.indexOf(t.p);
+        //        $scope.selectedOrderByValueList.splice(pos, 1);
+        //    }
+
+        //}
+
+        //$scope.selectedFilterByValueChanged = function (t) {
+
+        //    var found = $filter('filter')($scope.selectedFilterByValueList, t.p, 'strict');
+
+        //    if (found.length == 0) {
+        //        $scope.selectedFilterByValueList.push(t.p);
+        //    }
+        //    else {
+        //        var pos = $scope.selectedFilterByValueList.indexOf(t.p);
+        //        $scope.selectedFilterByValueList.splice(pos, 1);
+        //    }
+
+        //}
+
+		                            // User has new properties select. Server or Client?
+
+                            //res.modalScope.searchTableName = scope.searchTableName;
+                            //res.modalScope.serverOrderBy = ""
+                            //res.modalScope.serverFilter = "";
+                            //res.modalScope.serverSelectBy = "Country";
+                            //res.modalScope.serverTopBy = "";
+                            //res.modalScope.serverSkipBy = "";
+
+
+                            //angular.forEach(res.modalScope.o, function (o, keyo) {
+
+                            //    console.dir(o);
+                            //    //o.['selectedSelectValue'];
+                            //    if (o.selectedSelectValue == true) {
+
+                            //        var upperCaseFirstLetterSelectBy = o['columnName'][0].toUpperCase() + o['columnName'].slice(1);
+                            //        serverSelectByString = serverSelectByString + upperCaseFirstLetterSelectBy + ","
+                   
+                            //    }
+
+                            //    if (o.selectedOrderByValue == true) {
+
+                            //        var upperCaseFirstLetterOrderBy = o['columnName'][0].toUpperCase() + o['columnName'].slice(1);
+                            //        serverOrderByString = serverOrderByString + upperCaseFirstLetterOrderBy + ","
+
+
+                            //    }
+
+                            //});
+
+                            //angular.forEach(res.modalScope.o, function (o, keyo) {
+                            //    console.log(o.selectedSelectValue);
+                            //});
+
+                            //////// One for each checkbox
+                            //////angular.forEach(res.modalScope.selectedSelectValueList, function (o, keyo) {
+
+                            //////    //console.dir(o);
+                            //////    var upperCaseFirstLetterSelectBy = o[0].toUpperCase() + o.slice(1);
+                            //////    serverSelectByString = serverSelectByString + upperCaseFirstLetterSelectBy + ","
+                            //////});
+                            //////angular.forEach(res.modalScope.selectedOrderByValueList, function (o, keyo) {
+
+                            //////    var upperCaseFirstLetterOrderBy = o[0].toUpperCase() + o.slice(1);
+                            //////    serverOrderByString = serverOrderByString + upperCaseFirstLetterOrderBy + ","
+                            //////});
+
+                            //////angular.forEach(res.modalScope.selectedFilterByValueList, function (o, keyo) {
+
+                            //////    var upperCaseFirstLetterFilterBy = o[0].toUpperCase() + o.slice(1);
+                            //////    serverFilterByString = serverFilterByString + upperCaseFirstLetterFilterBy + ","
+                            //////});
+
+							
+                        ////var upperCaseFirstLetterOrderBy = orderBy[0].toUpperCase() + orderBy.slice(1);
+                        ////scope.serverOrderBy = upperCaseFirstLetterOrderBy;
+
+                        ////console.log("----------")
+
+                        ////console.log(scope.o[orderBy]['orderBy'])
+                        ////scope.o[orderBy]['orderBy'] = !scope.o[orderBy]['orderBy'];
+                        ////console.log(scope.o[orderBy]['orderBy'])
+
+                        ////console.log("----------")
+
+
+                        //////scope.orderByToggle = scope.o[scope.selectBy]['orderBy'];
+
+                        ////var sortType = (scope.o[orderBy]['orderBy'] == true) ? ' desc' : ' asc';
+
+                        ////scope.serverOrderBy = upperCaseFirstLetterOrderBy + sortType;
+                        ////console.log(scope.serverOrderBy)

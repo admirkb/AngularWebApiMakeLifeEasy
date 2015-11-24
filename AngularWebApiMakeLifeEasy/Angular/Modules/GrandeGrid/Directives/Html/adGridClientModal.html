@@ -1,0 +1,288 @@
+﻿<style>
+    .app-modal-window .modal-dialog {
+        height: auto;
+        width: 70%;
+    }
+</style>
+<div style="background-color:black; border-width:2px; border-style:solid; border-color:white; border-radius:6px;">
+    <div class="modal-header" style="color:wheat;">
+        <h3 class="modal-title">{{ thedata.message }}AdGrid Client Angular Properties</h3>
+    </div>
+
+    <div class="modal-body" style="color:wheat;background-color:transparent; overflow:hidden">
+
+        <tabset style="min-height:140px;">
+            <tab heading="Heading">
+                <table style="width:10%; position:relative; background-color:transparent;vertical-align:top;">
+
+                    <tr>
+                        <th><div>Column Name</div></th>
+                        <th><div>Display Name</div></th>
+
+                        <th><div>Font Family</div></th>
+                        <th><div>Font Size</div></th>
+
+                        <th><div>Font Weight</div></th>
+                        <th><div>Font Style</div></th>
+
+                        <th><div>Color</div></th>
+                        <th><div>Back Color</div></th>
+                        <th><div>Width</div></th>
+                        <th><div>Height</div></th>
+
+                    </tr>
+
+                    <tr data-ng-repeat="(keyp, p) in clientPropertiesObject.propertiesList" ng-if="p.columnName != '$id'">
+                        <td style="text-align:left;cursor:pointer"><div ng-bind="p.columnName"></div></td>
+                        <td><input type="text" ng-model="p.displayName" style="color:black;width:200px;"></td>
+
+
+                        <td>
+                            <div style=";background-color:orange;width:100%;">
+                                <div class="btn-group" dropdown style="width:inherit;background-color:orange">
+                                    <table style="width:inherit">
+                                        <tr>
+                                            <td style="text-align:right;background-color:white;width:inherit">
+                                                <button style="width:100%;text-align:right" type="button" class="btn btn-xs btn-danger dropdown-toggle" dropdown-toggle>
+                                                    {{p['fontFamilyH']}}
+                                                    <span class="caret"></span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <ul class="dropdown-menu">
+                                        <li ng-repeat="item in fonts">
+                                            <div ng-click="setChoiceIndex($index, item, p ,'fontFamilyH')" style="cursor:pointer;color:black"> {{item.value}}</div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+
+
+
+
+                        <td>
+                            <div style="width:80px;color:black">
+                                <ad-spinner init="0" imgsrc="/Images/DownArrow.png" value="p.fontSizeH" inc="1" rollover="1000"></ad-spinner>
+                            </div>
+                        </td>
+
+                        <td>
+                            <div style=";background-color:orange;width:100%;">
+                                <div class="btn-group" dropdown style="width:inherit;">
+                                    <table style="width:inherit">
+                                        <tr>
+                                            <td style="text-align:right;background-color:white;width:inherit">
+                                                <button style="width:100%;text-align:right" type="button" class="btn btn-xs btn-danger dropdown-toggle" dropdown-toggle>
+                                                    {{p['fontWeightH']}}
+                                                    <span class="caret"></span>
+                                                    <!--<span class="sr-only">Split button!</span>-->
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+
+                                    <ul class="dropdown-menu">
+                                        <li ng-repeat="item in fontWeights">
+                                            <div ng-click="setChoiceIndex($index, item, p ,'fontWeightH')" style="cursor:pointer;color:black"> {{item.value}}</div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div style=";background-color:orange;width:100%;">
+                                <div class="btn-group" dropdown style="width:inherit;background-color:orange">
+                                    <table style="width:inherit">
+                                        <tr>
+                                            <td style="text-align:right;background-color:white;width:inherit">
+                                                <button style="width:100%;text-align:right" type="button" class="btn btn-xs btn-danger dropdown-toggle" dropdown-toggle>
+                                                    {{p['fontStyleH']}}
+                                                    <span class="caret"></span>
+                                                    <!--<span class="sr-only">Split button!</span>-->
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+
+                                    <ul class="dropdown-menu">
+                                        <li ng-repeat="item in fontStyles">
+                                            <div ng-click="setChoiceIndex($index, item, p ,'fontStyleH')" style="cursor:pointer;color:black"> {{item.value}}</div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td style="width:50px;">
+                            <div style="width:inherit">
+                                <input ad-color-picker color="p.colorH" />
+                            </div>
+                        </td>
+                        <td style="width:50px;">
+                            <div style="width:inherit">
+                                <input ad-color-picker color="p.bgColorH" />
+                            </div>
+                        </td>
+                     
+
+
+                        <td><input type="text" ng-model="p.widthH" style="color:black;width:60px;"></td>
+                        <td><input type="text" ng-model="p.heightH" style="color:black;width:60px;"></td>
+
+
+
+                    </tr>
+                </table>
+                <tabset style="min-height:140px;">
+                    <tab heading="Border Properties ">
+                        <div ng-include="'Angular/Modules/GrandeGrid/Directives/html/TabGridClient1H.html'"></div>
+                    </tab>
+                    <tab heading="Properties 2">
+                        <div ng-include="'Angular/Modules/GrandeGrid/Directives/html/TabGridClient2H.html'"></div>
+                    </tab>
+                </tabset>
+            </tab>
+            <tab heading="Details">
+                <table style="width:10%; position:relative; background-color:transparent;">
+
+                    <tr>
+                        <th><div>Column Name</div></th>
+                        <th><div>Display Name</div></th>
+
+                        <th><div>Font Family</div></th>
+                        <th><div>Font Size</div></th>
+                        <th><div>Font Weight</div></th>
+                        <th><div>Font Style</div></th>
+                        
+                        <th><div>Color</div></th>
+                        <th><div>Back Color</div></th>
+                        <th><div>Width</div></th>
+                        <th><div>Height</div></th>
+
+
+
+                    </tr>
+
+                    <tr data-ng-repeat="(keyp, p) in clientPropertiesObject.propertiesList" ng-if="p.columnName != '$id'">
+                        <td style="text-align:left;cursor:pointer"><div ng-bind="p.columnName"></div></td>
+                        <td><input type="text" ng-model="p.displayName" style="color:black;width:200px;"></td>
+
+
+                        <td>
+                            <div style=";background-color:orange;width:100%;">
+                                <div class="btn-group" dropdown style="width:inherit;background-color:orange">
+                                    <table style="width:inherit">
+                                        <tr>
+                                            <td style="text-align:right;background-color:white;width:inherit">
+                                                <button style="width:100%;text-align:right" type="button" class="btn btn-xs btn-danger dropdown-toggle" dropdown-toggle>
+                                                    {{p['fontFamily']}}
+                                                    <span class="caret"></span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <ul class="dropdown-menu">
+                                        <li ng-repeat="item in fonts">
+                                            <div ng-click="setChoiceIndex($index, item, p ,'fontFamily')" style="cursor:pointer;color:black"> {{item.value}}</div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td><input type="text" ng-model="p.fontSize" style="color:black;width:60px;"></td>
+
+                        <td>
+                            <div style=";background-color:orange;width:100%;">
+                                <div class="btn-group" dropdown style="width:inherit;background-color:orange">
+                                    <table style="width:inherit">
+                                        <tr>
+                                            <td style="text-align:right;background-color:white;width:inherit">
+                                                <button style="width:100%;text-align:right" type="button" class="btn btn-xs btn-danger dropdown-toggle" dropdown-toggle>
+                                                    {{p['fontWeight']}}
+                                                    <span class="caret"></span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <ul class="dropdown-menu">
+                                        <li ng-repeat="item in fontWeights">
+                                            <div ng-click="setChoiceIndex($index, item, p ,'fontWeight')" style="cursor:pointer;color:black"> {{item.value}}</div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="background-color:orange;width:100%;">
+                                <div class="btn-group" dropdown style="width:inherit;background-color:orange">
+                                    <table style="width:inherit">
+                                        <tr>
+                                            <td style="text-align:right;background-color:white;width:inherit">
+                                                <button style="width:100%;text-align:right" type="button" class="btn btn-xs btn-danger dropdown-toggle" dropdown-toggle>
+                                                    {{p['fontStyle']}}
+                                                    <span class="caret"></span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <ul class="dropdown-menu">
+                                        <li ng-repeat="item in fontStyles">
+                                            <div ng-click="setChoiceIndex($index, item, p ,'fontStyle')" style="cursor:pointer;color:black"> {{item.value}}</div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+
+
+                        <td style="width:50px;">
+                            <div style="width:inherit">
+                                <input ad-color-picker color="p.color" />
+                            </div>
+                        </td>
+                        <td style="width:50px;">
+                            <div style="width:inherit">
+                                <!--<input ad-color-picker color="p.bgColor" />-->
+                                <input type="text" ng-model="p.bgColor" />
+                            </div>
+                        </td>
+
+                        <td><input type="text" ng-model="p.width" style="color:black;width:60px;"></td>
+                        <td><input type="text" ng-model="p.height" style="color:black;width:60px;"></td>
+
+
+                    </tr>
+                </table>
+                <tabset style="min-height:140px;">
+                    <tab heading="Border Properties">
+                        <div ng-include="'Angular/Modules/GrandeGrid/Directives/html/TabGridClient1.html'"></div>
+                    </tab>
+                    <tab heading="Properties 2">
+                        <div ng-include="'Angular/Modules/GrandeGrid/Directives/html/TabGridClient2.html'"></div>
+                    </tab>
+                </tabset>      
+            </tab>
+        </tabset>
+
+
+
+
+
+    </div>
+
+
+
+
+
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()" style="background-color:red;">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()" style="background-color:gray;">Cancel</button>
+    </div>
+
+
+</div>

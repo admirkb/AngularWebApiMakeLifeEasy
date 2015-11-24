@@ -6,6 +6,7 @@
         // Angular modules 
 
         // Custom modules 
+        'appGrandeGrid',
         'appWebApi',
 
         // 3rd Party Modules

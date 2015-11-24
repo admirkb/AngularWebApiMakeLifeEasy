@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Admir.AngularWebApiMakeLifeEasyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Admir.AngularWebApiMakeLifeEasyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bands">
           <Key>
             <PropertyRef Name="Id" />
@@ -26,6 +26,33 @@
           <Property Name="Region" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="PostalCode" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="Country" Type="nvarchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Locales">
+          <Key>
+            <PropertyRef Name="LocalesId" />
+          </Key>
+          <Property Name="LocalesId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Location" Type="geography" />
+          <Property Name="Latitude" Type="decimal" Precision="9" Scale="6" />
+          <Property Name="Longitude" Type="decimal" Precision="9" Scale="6" />
+          <Property Name="Accuracy" Type="decimal" Precision="15" Scale="6" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" />
+          <Property Name="DB" Type="nvarchar" MaxLength="255" />
+          <Property Name="PassengerId" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="LocalesHistory">
+          <Key>
+            <PropertyRef Name="CreateDate" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="LocalesHistoryId" Type="int" />
+          <Property Name="Location" Type="geography" />
+          <Property Name="Latitude" Type="decimal" Precision="9" Scale="6" />
+          <Property Name="Longitude" Type="decimal" Precision="9" Scale="6" Nullable="false" />
+          <Property Name="Accuracy" Type="decimal" Precision="15" Scale="6" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" />
+          <Property Name="DB" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="ProductFile">
           <Key>
@@ -62,6 +89,22 @@
           <Property Name="ShippingPrice" Type="numeric" Precision="16" Scale="4" />
           <Property Name="Details" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+            <PropertyRef Name="StaffId" />
+          </Key>
+          <Property Name="CustomerId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="StaffId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Icon" Type="varbinary(max)" />
+          <Property Name="Logo" Type="varbinary(max)" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="Filepath" Type="nvarchar" MaxLength="2048" />
+          <Property Name="Tags" Type="nvarchar" MaxLength="512" />
+          <Property Name="Width" Type="int" />
+          <Property Name="Height" Type="int" />
+        </EntityType>
         <EntityType Name="Suppliers">
           <Key>
             <PropertyRef Name="SupplierId" />
@@ -81,13 +124,24 @@
         <EntityContainer Name="AdmirAngularWebApiMakeLifeEasyModelStoreContainer">
           <EntitySet Name="Bands" EntityType="Self.Bands" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Locales" EntityType="Self.Locales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LocalesHistory" EntityType="Self.LocalesHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductFile" EntityType="Self.ProductFile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Suppliers" EntityType="Self.Suppliers" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Admir.AngularWebApiMakeLifeEasyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Band">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Precision="14" Scale="2" />
+        </EntityType>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="CustomerId" />
@@ -102,43 +156,13 @@
           <Property Name="PostalCode" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Country" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityType Name="Supplier">
-          <Key>
-            <PropertyRef Name="SupplierId" />
-          </Key>
-          <Property Name="SupplierId" Type="Int32" Nullable="false" />
-          <Property Name="CompanyName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="ContactName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="ContactTitle" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Address01" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
-          <Property Name="Address02" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
-          <Property Name="Address03" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
-          <Property Name="City" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="Region" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="PostalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Country" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityContainer Name="AngularWebApiMakeLifeEasyEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Customers" EntityType="Self.Customer" />
-          <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
-          <EntitySet Name="Bands" EntityType="Admir.AngularWebApiMakeLifeEasyModel.Band" />
-          <EntitySet Name="ProductFiles" EntityType="Admir.AngularWebApiMakeLifeEasyModel.ProductFile" />
-        </EntityContainer>
-        <EntityType Name="Band">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="Price" Type="Decimal" Precision="14" Scale="2" />
-        </EntityType>
         <EntityType Name="ProductFile">
           <Key>
             <PropertyRef Name="CustomerId" />
             <PropertyRef Name="ProductCode" />
           </Key>
-          <Property Name="CustomerId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductCode" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DescriptionShort" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="ProductGroup" Type="Int32" />
@@ -167,12 +191,89 @@
           <Property Name="ShippingPrice" Type="Decimal" Precision="16" Scale="4" />
           <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+            <PropertyRef Name="StaffId" />
+          </Key>
+          <Property Name="CustomerId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StaffId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Icon" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Filepath" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="Tags" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="Width" Type="Int32" />
+          <Property Name="Height" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="SupplierId" />
+          </Key>
+          <Property Name="SupplierId" Type="Int32" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="ContactName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ContactTitle" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Address01" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Address02" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Address03" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Region" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="AngularWebApiMakeLifeEasyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bands" EntityType="Self.Band" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="ProductFiles" EntityType="Self.ProductFile" />
+          <EntitySet Name="Staffs" EntityType="Self.Staff" />
+          <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+          <EntitySet Name="Locales" EntityType="Admir.AngularWebApiMakeLifeEasyModel.Locale" />
+          <EntitySet Name="LocalesHistories" EntityType="Admir.AngularWebApiMakeLifeEasyModel.LocalesHistory" />
+        </EntityContainer>
+        <EntityType Name="Locale">
+          <Key>
+            <PropertyRef Name="LocalesId" />
+          </Key>
+          <Property Name="LocalesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Location" Type="Geography" />
+          <Property Name="Latitude" Type="Decimal" Precision="9" Scale="6" />
+          <Property Name="Longitude" Type="Decimal" Precision="9" Scale="6" />
+          <Property Name="Accuracy" Type="Decimal" Precision="15" Scale="6" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="DB" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PassengerId" Type="Guid" />
+        </EntityType>
+        <EntityType Name="LocalesHistory">
+          <Key>
+            <PropertyRef Name="CreateDate" />
+          </Key>
+          <Property Name="Id" Type="Guid" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LocalesHistoryId" Type="Int32" />
+          <Property Name="Location" Type="Geography" />
+          <Property Name="Latitude" Type="Decimal" Precision="9" Scale="6" />
+          <Property Name="Longitude" Type="Decimal" Nullable="false" Precision="9" Scale="6" />
+          <Property Name="Accuracy" Type="Decimal" Precision="15" Scale="6" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="DB" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="AdmirAngularWebApiMakeLifeEasyModelStoreContainer" CdmEntityContainer="AngularWebApiMakeLifeEasyEntities">
+          <EntitySetMapping Name="Bands">
+            <EntityTypeMapping TypeName="Admir.AngularWebApiMakeLifeEasyModel.Band">
+              <MappingFragment StoreEntitySet="Bands">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="Admir.AngularWebApiMakeLifeEasyModel.Customer">
               <MappingFragment StoreEntitySet="Customers">
@@ -185,6 +286,57 @@
                 <ScalarProperty Name="Region" ColumnName="Region" />
                 <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
                 <ScalarProperty Name="Country" ColumnName="Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductFiles">
+            <EntityTypeMapping TypeName="Admir.AngularWebApiMakeLifeEasyModel.ProductFile">
+              <MappingFragment StoreEntitySet="ProductFile">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DescriptionShort" ColumnName="DescriptionShort" />
+                <ScalarProperty Name="ProductGroup" ColumnName="ProductGroup" />
+                <ScalarProperty Name="KeyboardOrderX" ColumnName="KeyboardOrderX" />
+                <ScalarProperty Name="KeyboardOrderY" ColumnName="KeyboardOrderY" />
+                <ScalarProperty Name="HTextAlign" ColumnName="HTextAlign" />
+                <ScalarProperty Name="TextSize" ColumnName="TextSize" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="VTextAlign" ColumnName="VTextAlign" />
+                <ScalarProperty Name="Facename" ColumnName="Facename" />
+                <ScalarProperty Name="VatCode" ColumnName="VatCode" />
+                <ScalarProperty Name="ShowDescriptionWithImage" ColumnName="ShowDescriptionWithImage" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="DSPhoto" ColumnName="DSPhoto" />
+                <ScalarProperty Name="WebPhoto" ColumnName="WebPhoto" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Filepath" ColumnName="Filepath" />
+                <ScalarProperty Name="Tags" ColumnName="Tags" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+                <ScalarProperty Name="XPos" ColumnName="XPos" />
+                <ScalarProperty Name="YPos" ColumnName="YPos" />
+                <ScalarProperty Name="ProductFace" ColumnName="ProductFace" />
+                <ScalarProperty Name="UseImage" ColumnName="UseImage" />
+                <ScalarProperty Name="ShippingPrice" ColumnName="ShippingPrice" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staffs">
+            <EntityTypeMapping TypeName="Admir.AngularWebApiMakeLifeEasyModel.Staff">
+              <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Filepath" ColumnName="Filepath" />
+                <ScalarProperty Name="Tags" ColumnName="Tags" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -205,47 +357,32 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Bands">
-            <EntityTypeMapping TypeName="Admir.AngularWebApiMakeLifeEasyModel.Band">
-              <MappingFragment StoreEntitySet="Bands">
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
+          <EntitySetMapping Name="Locales">
+            <EntityTypeMapping TypeName="Admir.AngularWebApiMakeLifeEasyModel.Locale">
+              <MappingFragment StoreEntitySet="Locales">
+                <ScalarProperty Name="PassengerId" ColumnName="PassengerId" />
+                <ScalarProperty Name="DB" ColumnName="DB" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Accuracy" ColumnName="Accuracy" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="LocalesId" ColumnName="LocalesId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ProductFiles">
-            <EntityTypeMapping TypeName="Admir.AngularWebApiMakeLifeEasyModel.ProductFile">
-              <MappingFragment StoreEntitySet="ProductFile">
-                <ScalarProperty Name="Details" ColumnName="Details" />
-                <ScalarProperty Name="ShippingPrice" ColumnName="ShippingPrice" />
-                <ScalarProperty Name="UseImage" ColumnName="UseImage" />
-                <ScalarProperty Name="ProductFace" ColumnName="ProductFace" />
-                <ScalarProperty Name="YPos" ColumnName="YPos" />
-                <ScalarProperty Name="XPos" ColumnName="XPos" />
-                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
-                <ScalarProperty Name="Height" ColumnName="Height" />
-                <ScalarProperty Name="Width" ColumnName="Width" />
-                <ScalarProperty Name="Tags" ColumnName="Tags" />
-                <ScalarProperty Name="Filepath" ColumnName="Filepath" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="WebPhoto" ColumnName="WebPhoto" />
-                <ScalarProperty Name="DSPhoto" ColumnName="DSPhoto" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
-                <ScalarProperty Name="ShowDescriptionWithImage" ColumnName="ShowDescriptionWithImage" />
-                <ScalarProperty Name="VatCode" ColumnName="VatCode" />
-                <ScalarProperty Name="Facename" ColumnName="Facename" />
-                <ScalarProperty Name="VTextAlign" ColumnName="VTextAlign" />
-                <ScalarProperty Name="Weight" ColumnName="Weight" />
-                <ScalarProperty Name="TextSize" ColumnName="TextSize" />
-                <ScalarProperty Name="HTextAlign" ColumnName="HTextAlign" />
-                <ScalarProperty Name="KeyboardOrderY" ColumnName="KeyboardOrderY" />
-                <ScalarProperty Name="KeyboardOrderX" ColumnName="KeyboardOrderX" />
-                <ScalarProperty Name="ProductGroup" ColumnName="ProductGroup" />
-                <ScalarProperty Name="DescriptionShort" ColumnName="DescriptionShort" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
-                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <EntitySetMapping Name="LocalesHistories">
+            <EntityTypeMapping TypeName="Admir.AngularWebApiMakeLifeEasyModel.LocalesHistory">
+              <MappingFragment StoreEntitySet="LocalesHistory">
+                <ScalarProperty Name="DB" ColumnName="DB" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Accuracy" ColumnName="Accuracy" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="LocalesHistoryId" ColumnName="LocalesHistoryId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
